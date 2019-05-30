@@ -17,38 +17,37 @@ project 1 - A Random Quote Generator
 
 var quotes = [
   { 
-    quote: "I don't believe that if you do good, good things will happen. Everything is completely accidental and random. Sometimes bad things happen to very good people and sometimes good things happen to bad people. But at least if you try to do good things, then you're spending your time doing something worthwhile.",
-    source: "Helen Mirren",
-    citation: "www.brainyquote.com/topics/random",
-    year: 2010,
+    quote: "Only a life lived for others is a life worthwhile.",
+    source: "Albert Einstein",
+    citation: "Internet",
+    year: 1943,
   },
   { 
   quote: "Everything happening around me is very random. I am enjoying the phase, as the journey is far more enjoyable than the destination.",
   source: "Sushant Singh Rajput",
-  citation: "www.brainyquote.com/topics/random",
-  year:2012 ,
+  citation: "brainyquote.com",
+  year: 2017,
   },
   { 
     quote: "Goals transform a random walk into a chase.",
     source: "Mihaly Csikszentmihalyi",
-    citation: "www.brainyquote.com/topics/random",
-    year: 1992,
+    citation: " ",
+    year: null,
   },
   { 
-    quote: "Life just doesn't care about our aspirations, or sadness. It's often random, and it's often stupid and it's often completely unexpected, and the closures and the epiphanies and revelations we end up receiving from life, begrudgingly, rarely turn out to be the ones we thought.",
-    source: "Khaled Hosseini",
-    citation: "www.brainyquote.com/topics/random",
-    year: 1990 ,
+    quote: "If you obey all the rules, you miss all the fun.",
+    source: "Katherine Hepburn",
+    citation: " ",
+    year: 1977,
   },
   { 
-    quote: "There are good people who are dealt a bad hand by fate, and bad people who live long, comfortable, privileged lives. A small twist of fate can save or end a life; random chance is a permanent, powerful player in each of our lives, and in human history as well.",
-    source: "Jeff Greenfield",
-    citation: "www.brainyquote.com/topics/random",
-    year: 2002,
+    quote: "Mistakes are part of the dues that one pays for a full life.",
+    source: "Sophia Loren",
+    citation: "Internet",
+    year: null,
   },
 ];
 
-console.log(quotes);
 /***
   Create the `getRandomQuote` function to:
    - Create a variable to store a random number 
@@ -57,10 +56,8 @@ console.log(quotes);
 
 function getRandomQuote(prod) {
   var randomNum = Math.floor(Math.random() * 5);
-  return prod[randomNum].quote;
-  
+  return prod[randomNum];
 };
-console.log(getRandomQuote(quotes));
 
 /***
   Create the `printQuote` function to: 
@@ -75,8 +72,27 @@ console.log(getRandomQuote(quotes));
    - Set the `innerHTML` of the `quote-box` div to the HTML string. 
 ***/
 
+function printQuote(){
+  var randomQuote = getRandomQuote(quotes);
+  var quoteString = "";
+  var myDiv = document.getElementById("quote-box");
+      quoteString += "<p class='quote'>"+ randomQuote.quote + "</p>";
+      quoteString += "<p class= 'source'>" + randomQuote.source + "</p>";
+  if (randomQuote.citation != " "){
+      quoteString += "<span class='citation'>"+ randomQuote.citation + "</span>"
+  } else {
+       quoteString += "<span class='citation'>Unknown</span>"
+  }
+  if (randomQuote.year != null){
+      quoteString += "<span class='year'>"+ randomQuote.year + "</span>"
+  } else {
+       quoteString += "<span class='year'>Unknown</span>"
+  }
 
+      myDiv.innerHTML = quoteString 
+};
 
+printQuote();
 
 /***
   When the "Show another quote" button is clicked, the event listener 
@@ -85,7 +101,7 @@ console.log(getRandomQuote(quotes));
   comment.
 ***/
 
-/*document.getElementById('loadQuote').addEventListener("click", printQuote, false);*/
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
