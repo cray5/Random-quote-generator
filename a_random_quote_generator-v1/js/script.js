@@ -18,30 +18,35 @@ var quotes = [
     source: "Albert Einstein",
     citation: "Internet",
     year: 1943,
+    tags: "Inspirational",
   },
   { 
-  quote: "Everything happening around me is very random. I am enjoying the phase, as the journey is far more enjoyable than the destination.",
-  source: "Sushant Singh Rajput",
-  citation: "brainyquote.com",
-  year: 2017,
+    quote: "Everything happening around me is very random. I am enjoying the phase, as the journey is far more enjoyable than the destination.",
+    source: "Sushant Singh Rajput",
+    citation: "brainyquote.com",
+    year: 2017,
+    tags: "Life"
   },
   { 
     quote: "Goals transform a random walk into a chase.",
     source: "Mihaly Csikszentmihalyi",
     citation: " ",
     year: null,
+    tags: "Ambition"
   },
   { 
     quote: "If you obey all the rules, you miss all the fun.",
     source: "Katherine Hepburn",
     citation: " ",
     year: 1977,
+    tags: "Life advice"
   },
   { 
     quote: "Mistakes are part of the dues that one pays for a full life.",
     source: "Sophia Loren",
     citation: "Internet",
     year: null,
+    tags: "Inspirational"
   },
 ];
 
@@ -55,6 +60,12 @@ function getRandomQuote(prod) {
   var randomNum = Math.floor(Math.random() * 5);
   return prod[randomNum];
 };
+
+/*
+setInterval is used to change the quote automatically every 25s, 
+it only happens when the 'show another quote' button is not clicked.
+*/
+var intervalID = window.setInterval(printQuote, 25000);
 
 /***
  printQuote() function has 3 var:
@@ -79,15 +90,36 @@ function printQuote(){
        quoteString += "<span class='citation'>Unknown</span>"
   }
   if (randomQuote.year != null){
-      quoteString += "<span class='year'>"+ randomQuote.year + "</span></p>"
+      quoteString += "<span class='year'>"+ randomQuote.year + "</span>"
   } else {
-       quoteString += "<span class='year'>Unknown</span></p>"
+       quoteString += "<span class='year'>Unknown</span>"
   }
+       quoteString += "<span class='year'>"+ randomQuote.tags + "</span></p>"
 
-      myDiv.innerHTML = quoteString 
-};
+      myDiv.innerHTML = quoteString
+  /*
+  to change the background color of index.html 
+  eveytime we click 'show another quote' botton
+  */
+  var rand_bkg_color = (function() {
+
+  // return rand from min included to max included
+  var rand = function(min, max) {
+  return Math.floor(Math.random() * (max-min+1)+min);
+  }
+  
+  //returns a random rgb color code
+  return function(){
+  return 'rgb('+rand(0,255)+','+rand(0,255)+','+rand(0,255)+')';
+  };
+  })();
+
+  //changes the background colour of index.html.
+  document.body.style.background =rand_bkg_color(); 
+  };
 
 printQuote();
+
 
 /***
   When the "Show another quote" button is clicked, the event listener 
