@@ -49,7 +49,7 @@ var quotes = [
 ***/
 
 function getRandomQuote(prod) {
-  var randomNum = Math.floor(Math.random() * 5);
+  var randomNum = Math.floor(Math.random() * quotes.length);
   return prod[randomNum];
 };
 
