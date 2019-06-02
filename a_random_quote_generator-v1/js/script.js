@@ -8,8 +8,6 @@ project 1 - A Random Quote Generator
 /*
   Created array quotes with 5 object elements.
   The objects have 4 key pair - quote, source, citation, year.
-  Empty strings values are showm by " ".
-  Empty number values are shown by null.
 */
 
 var quotes = [
@@ -30,14 +28,11 @@ var quotes = [
   { 
     quote: "Goals transform a random walk into a chase.",
     source: "Mihaly Csikszentmihalyi",
-    citation: " ",
-    year: null,
     tags: "Ambition"
   },
   { 
     quote: "If you obey all the rules, you miss all the fun.",
     source: "Katherine Hepburn",
-    citation: " ",
     year: 1977,
     tags: "Life advice"
   },
@@ -45,7 +40,6 @@ var quotes = [
     quote: "Mistakes are part of the dues that one pays for a full life.",
     source: "Sophia Loren",
     citation: "Internet",
-    year: null,
     tags: "Inspirational"
   },
 ];
@@ -73,7 +67,7 @@ var intervalID = window.setInterval(printQuote, 25000);
     - quoteString:- to build the html script string to be passes to index.html. this will display the random quote on the screen.
     - myDiv = document.getElementById("quote-box"):- it get the div on index.html file which would be updated with random data from quotes array.
  
- if else conditional statements are used to ensure appropriate data for "citation" and "year" key value pair of the random object element is passed onto index.html.
+ if conditional statements are used to ensure appropriate data for "citation" and "year" key value pair of the random object element is passed onto index.html.
   
  myDiv.innerHTML = quoteString is used to pass the new string data constructed to index.html. 
 ***/
@@ -84,16 +78,12 @@ function printQuote(){
   var myDiv = document.getElementById("quote-box");
       quoteString += "<p class='quote'>"+ randomQuote.quote + "</p>";
       quoteString += "<p class= 'source'>" + randomQuote.source;
-  if (randomQuote.citation != " "){
+  if (randomQuote.citation){
       quoteString += "<span class='citation'>"+ randomQuote.citation + "</span>"
-  } else {
-       quoteString += "<span class='citation'>Unknown</span>"
-  }
-  if (randomQuote.year != null){
+  } 
+  if (randomQuote.year){
       quoteString += "<span class='year'>"+ randomQuote.year + "</span>"
-  } else {
-       quoteString += "<span class='year'>Unknown</span>"
-  }
+  } 
        quoteString += "<span class='year'>"+ randomQuote.tags + "</span></p>"
 
       myDiv.innerHTML = quoteString
