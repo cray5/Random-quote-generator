@@ -3,8 +3,6 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
-
 /*
   Created array quotes with 5 object elements.
   The objects have 4 key pair - quote, source, citation, year.
@@ -121,4 +119,3 @@ printQuote();
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
